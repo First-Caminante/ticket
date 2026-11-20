@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es" data-theme="ropa">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAF9">
+  <title>Clínica de Ropas El Detalle — Seguimiento de Prendas</title>
+  <meta name="description" content="Arreglos de prendas, entalles y mochilas en Sopocachi, La Paz. Seguimiento por Ticket QR.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../../assets/tracker/tracker-engine.css">
+</head>
+<body>
+  <div id="tracker-app"></div>
+  <script src="../../assets/tracker/tracker-engine.js"></script>
+  <script>
+    window.initTracker({
+      id: 'clinica-ropa-el-detalle',
+      name: 'Clínica de Ropas El Detalle',
+      subtitle: 'Sopocachi · Arreglos de prendas y mochilas',
+      hours: 'Lun–Sáb 09:00 a 19:00',
+      qrHolder: 'El Detalle Costura (Cuenta demo)',
+      fields: {
+        itemLabel: 'Prenda / Artículo',
+        itemPlaceholder: 'Ej. Mochila negra / Saco azul marino',
+        workLabel: 'Arreglo solicitado',
+        workPlaceholder: 'Ej. Cambio de cierre reforzado',
+        extraLabel: 'Hora / fecha prometida',
+        extraShort: 'Detalle',
+        extraPlaceholder: 'Ej. Con gancho y forro revisado',
+      },
+      states: [
+        { id: 'recibido', label: 'Recibido', shortLabel: 'Recibido', clientHint: 'Prenda etiquetada y registrada en taller.' },
+        { id: 'proceso', label: 'En trabajo', shortLabel: 'En trabajo', clientHint: 'Tu prenda está en mesa de costura en este momento.' },
+        { id: 'espera', label: 'Esperando material', shortLabel: 'Material', clientHint: 'Esperando cierre, botón o hilo del tono exacto.' },
+        { id: 'listo', label: 'Listo para recoger', shortLabel: 'Listo', clientHint: 'Arreglo terminado y planchado. Puedes pasar por Sopocachi.' },
+        { id: 'entregado', label: 'Entregado', shortLabel: 'Entregado', clientHint: 'Prenda retirada por el cliente.' },
+      ],
+      seedOrders: [
+        {
+          number: 104,
+          client: 'Diego Paredes',
+          phone: '75233556',
+          item: 'Mochila negra urbana',
+          work: 'Cambio de cierre reforzado',
+          extra: 'Doble deslizador metálico',
+          eta: 'Hoy 17:00',
+          total: 35,
+          deposit: 15,
+          status: 'listo',
+          updatedAt: 'Hoy · 15:25',
+          photo: '',
+        },
+        {
+          number: 105,
+          client: 'Andrea Lozano',
+          phone: '75233556',
+          item: 'Saco azul marino',
+          work: 'Entalle y ajuste de mangas',
+          extra: 'Largo de manga -2 cm',
+          eta: 'Mañana 16:00',
+          total: 65,
+          deposit: 30,
+          status: 'proceso',
+          updatedAt: 'Hoy · 14:10',
+          photo: '',
+        },
+        {
+          number: 106,
+          client: 'Luis Fernando Arce',
+          phone: '75233556',
+          item: 'Chamarra impermeable',
+          work: 'Cambio de 3 broches',
+          extra: 'Broches color negro mate',
+          eta: 'Mañana 18:00',
+          total: 40,
+          deposit: 0,
+          status: 'recibido',
+          updatedAt: 'Hoy · 12:30',
+          photo: '',
+        },
+      ],
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es" data-theme="pizzeria">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAFA">
+  <title>Forno Paceño — Pizza a la Piedra</title>
+  <meta name="description" content="Pizza artesanal a la piedra en San Miguel, La Paz. Elige tamaño, borde y extras con pedido directo por WhatsApp.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../../assets/menu-qr/menu-engine.css">
+</head>
+<body>
+  <div id="menu-app"></div>
+  <script src="../../assets/menu-qr/menu-engine.js"></script>
+  <script>
+    const pizzaModifiers = (medDelta, famDelta) => [
+      {
+        id: 'tamano',
+        label: 'Tamaño',
+        shortLabel: 'Tamaño',
+        type: 'radio',
+        required: true,
+        options: [
+          { id: 'personal', label: 'Personal (6 porciones)', delta: 0 },
+          { id: 'mediana', label: 'Mediana (8 porciones)', delta: medDelta },
+          { id: 'familiar', label: 'Familiar (12 porciones)', delta: famDelta },
+        ],
+      },
+      {
+        id: 'borde',
+        label: 'Borde',
+        shortLabel: 'Borde',
+        type: 'radio',
+        required: true,
+        options: [
+          { id: 'clasico', label: 'Clásico a la piedra', delta: 0 },
+          { id: 'queso', label: 'Relleno de queso', delta: 12 },
+        ],
+      },
+      {
+        id: 'extras',
+        label: 'Extras opcionales',
+        shortLabel: 'Extras',
+        type: 'checkbox',
+        options: [
+          { id: 'extra-queso', label: 'Extra queso mozzarella', delta: 10 },
+          { id: 'aceitunas', label: 'Aceitunas negras', delta: 6 },
+          { id: 'jalapenos', label: 'Jalapeños', delta: 6 },
+        ],
+      },
+    ];
+
+    window.initMenuQR({
+      id: 'pizzeria-forno-paceno',
+      name: 'Forno Paceño',
+      subtitle: 'San Miguel · Pizza a la piedra',
+      badge: 'Horno a 400°C',
+      zoneInfo: 'Calle 21 de Calacoto · 18:00 a 23:00',
+      qrHolder: 'Forno Paceño SRL (Cuenta demo)',
+      categories: [
+        { id: 'clasicas', label: 'Pizzas Clásicas' },
+        { id: 'especiales', label: 'Especiales' },
+        { id: 'acompanamientos', label: 'Acompañamientos' },
+        { id: 'bebidas', label: 'Bebidas' },
+      ],
+      fulfillmentModes: [
+        { id: 'mesa', label: 'En mesa', hint: 'Indica tu N° de mesa' },
+        { id: 'recoger', label: 'Para recoger', hint: 'San Miguel' },
+        { id: 'delivery', label: 'Delivery por zona', hint: 'Bs 10–12' },
+      ],
+      items: [
+        {
+          id: 'pizza-margarita',
+          category: 'clasicas',
+          name: 'Margarita',
+          description: 'Salsa de tomate San Marzano, mozzarella fresca, albahaca y aceite de oliva.',
+          price: 48,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80',
+          modifiers: pizzaModifiers(24, 47),
+        },
+        {
+          id: 'pizza-pepperoni',
+          category: 'clasicas',
+          name: 'Pepperoni',
+          tag: 'Favorita',
+          description: 'Dobles láminas de pepperoni crocante sobre salsa de la casa y mozzarella.',
+          price: 54,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=600&q=80',
+          modifiers: pizzaModifiers(26, 51),
+        },
+        {
+          id: 'pizza-cuatro-quesos',
+          category: 'clasicas',
+          name: 'Cuatro Quesos',
+          description: 'Mozzarella, queso azul, parmesano maduro y queso criollo gratinado.',
+          price: 56,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
+          modifiers: pizzaModifiers(26, 54),
+        },
+        {
+          id: 'pizza-pacena-especial',
+          category: 'especiales',
+          name: 'Paceña Especial',
+          tag: 'De la casa',
+          description: 'Chorizo artesanal, cebolla morada, locoto suave, mozzarella y orégano.',
+          price: 58,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80',
+          modifiers: pizzaModifiers(27, 57),
+        },
+        {
+          id: 'pan-de-ajo',
+          category: 'acompanamientos',
+          name: 'Pan de Ajo',
+          description: '6 porciones de masa madre horneadas con mantequilla de ajo y queso.',
+          price: 24,
+          image: 'https://images.unsplash.com/photo-1573140401552-3fab0b24306f?auto=format&fit=crop&w=600&q=80',
+          modifiers: [],
+        },
+        {
+          id: 'gaseosa-2l',
+          category: 'bebidas',
+          name: 'Gaseosa 2L',
+          description: 'Botella familiar bien fría para compartir en mesa o en casa.',
+          price: 15,
+          image: 'https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'sabor',
+              label: 'Sabor',
+              shortLabel: 'Sabor',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'coca', label: 'Coca-Cola', delta: 0 },
+                { id: 'sprite', label: 'Sprite', delta: 0 },
+                { id: 'fanta', label: 'Fanta Naranja', delta: 0 },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+  </script>
+</body>
+</html>

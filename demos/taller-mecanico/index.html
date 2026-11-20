@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es" data-theme="mecanico">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F8FAFC">
+  <title>Taller Automotriz Illimani — Órdenes de Servicio</title>
+  <meta name="description" content="Mecánica general y escáner automotriz en Miraflores, La Paz. Seguimiento de vehículo y presupuesto por Ticket QR.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../../assets/tracker/tracker-engine.css">
+</head>
+<body>
+  <div id="tracker-app"></div>
+  <script src="../../assets/tracker/tracker-engine.js"></script>
+  <script>
+    window.initTracker({
+      id: 'taller-automotriz-illimani',
+      name: 'Taller Automotriz Illimani',
+      subtitle: 'Miraflores · Mecánica general y escáner',
+      hours: 'Lun–Sáb 08:30 a 18:30',
+      qrHolder: 'Taller Illimani SRL (Cuenta demo)',
+      fields: {
+        itemLabel: 'Vehículo y Placa',
+        itemPlaceholder: 'Ej. Toyota Corolla 2018 · Placa 4521-LPX',
+        workLabel: 'Servicio / Falla reportada',
+        workPlaceholder: 'Ej. Cambio de pastillas de freno y aceite',
+        extraLabel: 'Kilometraje / observaciones',
+        extraShort: 'Observación',
+        extraPlaceholder: 'Ej. 84.500 km · Revisar presión de llantas',
+      },
+      states: [
+        { id: 'recibido', label: 'Recibido', shortLabel: 'Recibido', clientHint: 'Vehículo ingresado y registrado en ficha de servicio.' },
+        { id: 'proceso', label: 'En revisión', shortLabel: 'Revisión', clientHint: 'El vehículo está en diagnóstico o servicio activo.' },
+        { id: 'espera', label: 'Esperando repuesto', shortLabel: 'Repuesto', clientHint: 'Esperando entrega de repuestos aprobados en presupuesto.' },
+        { id: 'listo', label: 'Listo para recoger', shortLabel: 'Listo', clientHint: 'Servicio completado y probado en ruta. Listo para entrega.' },
+        { id: 'entregado', label: 'Entregado', shortLabel: 'Entregado', clientHint: 'Vehículo entregado al propietario.' },
+      ],
+      seedOrders: [
+        {
+          number: 208,
+          client: 'Jorge Salazar',
+          phone: '75233556',
+          item: 'Toyota Corolla 2018 · Placa 4521-LPX',
+          work: 'Cambio de pastillas de freno y aceite',
+          extra: 'Aceite sintético 5W-30 + filtro',
+          eta: 'Hoy 17:30',
+          total: 480,
+          deposit: 200,
+          status: 'listo',
+          updatedAt: 'Hoy · 15:40',
+          photo: '',
+        },
+        {
+          number: 209,
+          client: 'Paola Mendoza',
+          phone: '75233556',
+          item: 'Suzuki Vitara · Placa 5190-KDA',
+          work: 'Diagnóstico escáner y bujías',
+          extra: 'Bujías iridium en camino',
+          eta: 'Mañana 12:00',
+          total: 350,
+          deposit: 100,
+          status: 'espera',
+          updatedAt: 'Hoy · 14:20',
+          photo: '',
+        },
+        {
+          number: 210,
+          client: 'Carlos Miranda',
+          phone: '75233556',
+          item: 'Nissan Sentra · Placa 3812-PZR',
+          work: 'Afinado completo',
+          extra: 'Revisión de inyectores y filtro de aire',
+          eta: 'Hoy 18:15',
+          total: 420,
+          deposit: 0,
+          status: 'proceso',
+          updatedAt: 'Hoy · 13:50',
+          photo: '',
+        },
+      ],
+    });
+  </script>
+</body>
+</html>

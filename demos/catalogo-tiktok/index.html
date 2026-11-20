@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFAF9">
+  <title>Norte Urbano — Catálogo Express WhatsApp</title>
+  <meta name="description" content="Tienda urbana en La Paz. Envíos en estaciones de Mi Teleférico, domicilio y todo el país con pedido directo por WhatsApp.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a href="#catalogo" class="skip-link visually-hidden">Ir al catálogo de productos</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <a href="../../" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5"/>
+            <path d="m12 19-7-7 7-7"/>
+          </svg>
+          Demos
+        </a>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <span class="brand-name">Norte Urbano</span>
+      </div>
+
+      <div class="topbar__actions">
+        <button type="button" class="icon-btn" id="search-toggle" aria-expanded="false" aria-controls="search-drawer" aria-label="Buscar prendas">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+        </button>
+
+        <button type="button" class="icon-btn icon-btn--bordered" id="topbar-cart-btn" aria-label="Abrir carrito">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+            <path d="M3 6h18"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge" id="topbar-cart-count" hidden>0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-drawer" id="search-drawer" hidden>
+      <div class="search-field">
+        <svg class="search-field__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <label for="search-input" class="visually-hidden">Buscar en el catálogo</label>
+        <input
+          id="search-input"
+          class="search-field__input"
+          type="search"
+          placeholder="Buscar polera, hoodie, gorra..."
+          autocomplete="off"
+          enterkeyhint="search"
+        >
+        <button type="button" class="search-field__clear" id="search-clear" aria-label="Limpiar búsqueda" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="catalogo" class="store-main" tabindex="-1">
+    <section class="store-intro">
+      <div class="container store-intro__row">
+        <h1 class="store-title">Norte Urbano</h1>
+        <p class="store-subtitle">Envíos en La Paz, estaciones de Mi Teleférico y todo el país</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="catalog-toolbar">
+        <div class="category-rail" role="group" aria-label="Filtrar por categoría" id="category-rail">
+          <button type="button" class="cat-pill" data-cat="todo" aria-pressed="true">Todo</button>
+          <button type="button" class="cat-pill" data-cat="poleras" aria-pressed="false">Poleras</button>
+          <button type="button" class="cat-pill" data-cat="abrigos" aria-pressed="false">Abrigos</button>
+          <button type="button" class="cat-pill" data-cat="accesorios" aria-pressed="false">Accesorios</button>
+        </div>
+        <p class="catalog-count" id="catalog-count" aria-live="polite">8 prendas</p>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+    </div>
+  </main>
+
+  <!-- Floating bottom cart bar (hidden when empty) -->
+  <div class="floating-cart" id="floating-cart" hidden>
+    <button type="button" class="floating-cart__btn" id="floating-cart-btn">
+      <span class="floating-cart__left">
+        <span class="floating-cart__pill" id="floating-cart-count">0</span>
+        <span>Ver carrito</span>
+      </span>
+      <span class="floating-cart__total" id="floating-cart-total">Bs 0</span>
+    </button>
+  </div>
+
+  <footer class="store-footer">
+    <div class="container store-footer__inner">
+      <span class="store-footer__note">Norte Urbano · San Miguel, La Paz · Pedidos directos por WhatsApp</span>
+      <button type="button" class="owner-trigger" id="owner-open-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        Modo dueño (Demo)
+      </button>
+    </div>
+  </footer>
+
+  <!-- 1. Product Detail Sheet -->
+  <dialog class="sheet" id="product-dialog" closedby="any" aria-labelledby="detail-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="detail-title">Detalle de prenda</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar detalle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body" id="product-dialog-body"></div>
+    <div class="sheet__footer">
+      <button type="button" class="btn btn--primary btn--full" id="add-to-cart-btn">Agregar al carrito</button>
+    </div>
+  </dialog>
+
+  <!-- 2. Cart & Checkout Sheet -->
+  <dialog class="sheet sheet--cart" id="cart-dialog" closedby="any" aria-labelledby="cart-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="cart-title">Tu pedido</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body" id="cart-dialog-body"></div>
+    <div class="sheet__footer" id="cart-dialog-footer"></div>
+  </dialog>
+
+  <!-- 3. QR Simple Oficial Modal -->
+  <dialog class="sheet sheet--narrow" id="qr-dialog" closedby="any" aria-labelledby="qr-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="qr-title">QR Simple oficial</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar QR">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <div class="qr-card">
+        <div class="qr-merchant">
+          <span class="qr-merchant__name">Norte Urbano — La Paz</span>
+          <span class="qr-merchant__sub">Titular verificado: Norte Urbano SRL (Cuenta demo)</span>
+        </div>
+
+        <div class="qr-amount" id="qr-amount-badge">Total del pedido: Bs 0</div>
+
+        <div class="qr-frame" aria-label="Código QR Simple de ejemplo para Norte Urbano">
+          <svg width="184" height="184" viewBox="0 0 29 29" shape-rendering="crispEdges" role="img" aria-label="Código QR Simple de pago de ejemplo">
+            <rect width="29" height="29" fill="#FFFFFF"/>
+            <!-- Top-left finder -->
+            <path fill="#111111" d="M1,1 h7 v7 h-7 z M2,2 v5 h5 v-5 z M3,3 h3 v3 h-3 z"/>
+            <!-- Top-right finder -->
+            <path fill="#111111" d="M21,1 h7 v7 h-7 z M22,2 v5 h5 v-5 z M23,3 h3 v3 h-3 z"/>
+            <!-- Bottom-left finder -->
+            <path fill="#111111" d="M1,21 h7 v7 h-7 z M2,22 v5 h5 v-5 z M3,23 h3 v3 h-3 z"/>
+            <!-- Timing & data modules -->
+            <path fill="#111111" d="M10,1 h2 v2 h-2 z M14,1 h1 v2 h-1 z M17,1 h2 v1 h-2 z M10,4 h1 v3 h-1 z M13,3 h3 v2 h-3 z M17,4 h2 v3 h-2 z M11,7 h2 v1 h-2 z M15,7 h2 v1 h-2 z M1,10 h2 v2 h-2 z M4,10 h3 v1 h-3 z M9,9 h3 v3 h-3 z M14,9 h2 v2 h-2 z M18,9 h3 v2 h-3 z M23,10 h2 v2 h-2 z M26,10 h2 v1 h-2 z M2,13 h3 v2 h-3 z M7,12 h2 v3 h-2 z M11,13 h2 v2 h-2 z M15,12 h3 v3 h-3 z M20,13 h2 v2 h-2 z M24,13 h3 v2 h-3 z M1,16 h2 v3 h-2 z M5,16 h3 v2 h-3 z M10,16 h2 v2 h-2 z M14,16 h1 v3 h-1 z M17,16 h3 v2 h-3 z M22,16 h2 v3 h-2 z M26,16 h2 v2 h-2 z M10,20 h3 v2 h-3 z M15,20 h2 v2 h-2 z M19,20 h3 v2 h-3 z M24,20 h2 v2 h-2 z M10,24 h2 v2 h-2 z M13,23 h3 v3 h-3 z M18,24 h2 v3 h-2 z M21,23 h2 v2 h-2 z M25,23 h3 v2 h-3 z M10,27 h2 v1 h-2 z M15,27 h3 v1 h-3 z M22,26 h2 v2 h-2 z M26,26 h2 v2 h-2 z"/>
+          </svg>
+        </div>
+
+        <p class="qr-notice">
+          <strong>Aviso de seguridad:</strong> Verifica el titular antes de confirmar y envía tu comprobante por WhatsApp.
+        </p>
+      </div>
+    </div>
+    <div class="sheet__footer">
+      <button type="button" class="btn btn--secondary btn--full" data-close-dialog>Cerrar</button>
+    </div>
+  </dialog>
+
+  <!-- 4. Owner Mode Sheet (localStorage) -->
+  <dialog class="sheet" id="owner-dialog" closedby="any" aria-labelledby="owner-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="owner-title">Modo dueño — Inventario rápido</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar modo dueño">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <p class="owner-intro">Toca un estado o edita el precio en Bs. Los cambios se guardan en este navegador y actualizan la vista cliente al instante.</p>
+      <div class="owner-list" id="owner-list"></div>
+    </div>
+    <div class="sheet__footer owner-footer">
+      <button type="button" class="btn btn--ghost" id="owner-reset-btn">Restaurar datos de ejemplo</button>
+      <button type="button" class="btn btn--primary" data-close-dialog>Ver tienda</button>
+    </div>
+  </dialog>
+
+  <!-- Toast notification region -->
+  <div class="toast-region" role="region" aria-label="Notificaciones">
+    <div id="toast" class="toast" popover="manual">
+      <span id="toast-message"></span>
+      <button type="button" class="toast__close" popovertarget="toast" popovertargetaction="hide" aria-label="Cerrar aviso">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/>
+          <path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="toast-live" class="visually-hidden" aria-live="polite"></div>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

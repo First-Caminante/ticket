@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es" data-theme="pension">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FCFBF8">
+  <title>Comedor Doña Elena — Menú QR del Día</title>
+  <meta name="description" content="Almuerzos caseros en Miraflores, La Paz. Menú del día de 11:30 a 15:00 con pedido rápido por WhatsApp.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../../assets/menu-qr/menu-engine.css">
+</head>
+<body>
+  <div id="menu-app"></div>
+  <script src="../../assets/menu-qr/menu-engine.js"></script>
+  <script>
+    window.initMenuQR({
+      id: 'pension-dona-elena',
+      name: 'Comedor Doña Elena',
+      subtitle: 'Miraflores · Almuerzos caseros de 11:30 a 15:00',
+      badge: 'Menú del día',
+      zoneInfo: 'Av. Busch y Villalobos · La Paz',
+      qrHolder: 'Elena Quispe (Cuenta demo)',
+      categories: [
+        { id: 'almuerzo', label: 'Almuerzo del Día' },
+        { id: 'extras', label: 'Platos Extra' },
+        { id: 'refrescos', label: 'Refrescos' },
+      ],
+      fulfillmentModes: [
+        { id: 'mesa', label: 'En mesa', hint: 'Indica tu N° de mesa' },
+        { id: 'llevar', label: 'Para llevar (recoger)', hint: 'Gratis' },
+        { id: 'delivery', label: 'Delivery por zona', hint: 'Bs 10–12' },
+      ],
+      items: [
+        {
+          id: 'almuerzo-completo',
+          category: 'almuerzo',
+          name: 'Almuerzo Completo',
+          tag: 'Plato del día',
+          description: 'Sopa casera del día, segundo a elección y guarnición o postre.',
+          price: 22,
+          image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'sopa',
+              label: 'Elige tu sopa',
+              shortLabel: 'Sopa',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'mani', label: 'Sopa de Maní', delta: 0 },
+                { id: 'chairo', label: 'Chairo Paceño', delta: 0 },
+              ],
+            },
+            {
+              id: 'segundo',
+              label: 'Elige tu segundo',
+              shortLabel: 'Segundo',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'sajta', label: 'Sajta de pollo', delta: 0 },
+                { id: 'fricase', label: 'Fricasé', delta: 4 },
+                { id: 'asado', label: 'Asado a la olla', delta: 0 },
+              ],
+            },
+            {
+              id: 'acompanamiento',
+              label: 'Guarnición o Postre',
+              shortLabel: 'Extra',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'ensalada', label: 'Ensalada fresca de estación', delta: 0 },
+                { id: 'gelatina', label: 'Gelatina casera', delta: 0 },
+                { id: 'arroz-leche', label: 'Arroz con leche', delta: 3 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'silpancho',
+          category: 'extras',
+          name: 'Silpancho Completo',
+          description: 'Carne apanada a la plancha sobre arroz, papas doradas, huevo y zarza.',
+          price: 32,
+          image: 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'llajwa',
+              label: 'Acompañamiento',
+              shortLabel: 'Detalle',
+              type: 'checkbox',
+              options: [
+                { id: 'llajwa-extra', label: 'Llajwa casera aparte', delta: 0 },
+                { id: 'huevo-extra', label: 'Huevo frito adicional', delta: 4 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'milanesa-pollo',
+          category: 'extras',
+          name: 'Milanesa de Pollo',
+          description: 'Pechuga crocante con guarnición de arroz graneado, papas y ensalada.',
+          price: 28,
+          image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'guarnicion',
+              label: 'Guarnición',
+              shortLabel: 'Guarnición',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'arroz-papa', label: 'Arroz y papa frita', delta: 0 },
+                { id: 'pure', label: 'Puré de papa y ensalada', delta: 0 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'pique-macho',
+          category: 'extras',
+          name: 'Pique Macho Personal',
+          description: 'Trozos de res salteados con salchicha, papa frita, cebolla, tomate y locoto.',
+          price: 38,
+          image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'picante',
+              label: 'Nivel de locoto',
+              shortLabel: 'Picante',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'normal', label: 'Con locoto aparte', delta: 0 },
+                { id: 'sin-locoto', label: 'Sin locoto', delta: 0 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'mocochinchi',
+          category: 'refrescos',
+          name: 'Refresco de Mocochinchi (Jarra 1L)',
+          description: 'Hervido tradicional con canela y clavo de olor, bien frío.',
+          price: 18,
+          image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&q=80',
+          modifiers: [],
+        },
+        {
+          id: 'limonada-hierbabuena',
+          category: 'refrescos',
+          name: 'Limonada con Hierbabuena (Jarra 1L)',
+          description: 'Preparada al momento con limón fresco y toque de hierbabuena.',
+          price: 18,
+          image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
+          modifiers: [],
+        },
+      ],
+    });
+  </script>
+</body>
+</html>

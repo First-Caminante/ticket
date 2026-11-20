@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAFBFB">
+  <title>Veterinaria Patitas del Sur — Carnet Digital de Vacunas</title>
+  <meta name="description" content="Historial digital de vacunas y recordatorios de refuerzo por WhatsApp para Veterinaria Patitas del Sur en San Miguel / Calacoto, La Paz.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a href="#vet-workspace" class="skip-link visually-hidden">Ir al contenido principal</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <a href="../../" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+          </svg>
+          Demos
+        </a>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <span class="topbar__brand">Patitas del Sur</span>
+      </div>
+      <button type="button" class="topbar__cta" id="open-register-btn">+ Registrar mascota / vacuna</button>
+    </div>
+  </header>
+
+  <section class="clinic-header">
+    <div class="container clinic-header__grid">
+      <div>
+        <h1 class="clinic-title">Veterinaria Patitas del Sur</h1>
+        <p class="clinic-meta">San Miguel / Calacoto · La Paz · Carnet digital sin app</p>
+      </div>
+      <div class="mode-switch" role="group" aria-label="Cambiar vista">
+        <button type="button" class="mode-switch__btn" data-switch-view="vet" aria-pressed="true">Vista Veterinaria (Dueño)</button>
+        <button type="button" class="mode-switch__btn" data-switch-view="cliente" aria-pressed="false">Vista Cliente (Carnet)</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="vet-workspace" class="vet-main" tabindex="-1">
+    <div class="container">
+      <!-- VISTA VETERINARIA -->
+      <section class="view-panel" id="view-vet">
+        <div class="reminders-box">
+          <div class="reminders-head">
+            <h2 class="section-heading" style="margin:0;">Refuerzos por recordar esta semana</h2>
+            <span class="status-badge status-badge--pronto tabular" id="reminders-count">2 pendientes</span>
+          </div>
+          <div class="reminders-list" id="reminders-list"></div>
+        </div>
+
+        <h2 class="section-heading">Pacientes registrados</h2>
+        <div class="patients-grid" id="patients-grid"></div>
+      </section>
+
+      <!-- VISTA CLIENTE -->
+      <section class="view-panel" id="view-cliente" hidden>
+        <div class="carnet-shell">
+          <div class="pet-chips" id="pet-chips"></div>
+          <div id="carnet-content" class="carnet-shell"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="vet-footer">
+    <div class="container vet-footer__inner">
+      <span>Veterinaria Patitas del Sur · San Miguel / Calacoto, La Paz</span>
+      <button type="button" class="reset-link" id="reset-demo-btn">Restaurar datos demo</button>
+    </div>
+  </footer>
+
+  <!-- Modal: Registrar Mascota o Vacuna -->
+  <dialog class="sheet" id="register-dialog" closedby="any" aria-labelledby="register-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="register-title">Registrar vacuna o mascota</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <form class="form-stack" id="register-form">
+        <div class="field">
+          <label for="reg-mode">Acción</label>
+          <select id="reg-mode" name="mode">
+            <option value="existing">Agregar dosis a mascota existente</option>
+            <option value="new-pet">Registrar nueva mascota con primera dosis</option>
+          </select>
+        </div>
+
+        <div id="existing-pet-fields" class="field">
+          <label for="reg-pet-id">Mascota</label>
+          <select id="reg-pet-id" name="petId"></select>
+        </div>
+
+        <div id="new-pet-fields" class="form-stack" hidden>
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="reg-pet-name">Nombre de mascota</label>
+              <input id="reg-pet-name" name="petName" type="text" placeholder="Ej. Toby">
+            </div>
+            <div class="field">
+              <label for="reg-species">Especie</label>
+              <select id="reg-species" name="species">
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="reg-breed">Raza</label>
+              <input id="reg-breed" name="breed" type="text" placeholder="Ej. Mestizo">
+            </div>
+            <div class="field">
+              <label for="reg-age">Edad y peso</label>
+              <input id="reg-age" name="age" type="text" placeholder="Ej. 2 años">
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="field">
+              <label for="reg-tutor">Tutor</label>
+              <input id="reg-tutor" name="tutor" type="text" placeholder="Ej. Patricia G.">
+            </div>
+            <div class="field">
+              <label for="reg-phone">WhatsApp (+591)</label>
+              <input id="reg-phone" name="phone" type="tel" inputmode="tel" placeholder="75233556">
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="reg-vaccine">Vacuna o desparasitación *</label>
+          <input id="reg-vaccine" name="vaccine" type="text" required placeholder="Ej. Antirrábica / Desparasitación">
+        </div>
+
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="reg-next">Próximo refuerzo</label>
+            <input id="reg-next" name="nextDue" type="text" placeholder="Ej. 20 Nov 2027">
+          </div>
+          <div class="field">
+            <label for="reg-status">Estado</label>
+            <select id="reg-status" name="status">
+              <option value="al-dia">Al día</option>
+              <option value="pronto">Próximo refuerzo</option>
+              <option value="vencida">Vencida</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="sheet__footer">
+      <button type="submit" form="register-form" class="btn btn--primary btn--full">Guardar en el carnet</button>
+    </div>
+  </dialog>
+
+  <!-- Modal: Dirección y Horarios -->
+  <dialog class="sheet" id="info-dialog" closedby="any" aria-labelledby="info-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="info-title">Dirección y horarios</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <div class="info-list">
+        <div><strong>Ubicación</strong>Av. Montenegro, San Miguel / Calacoto — La Paz, Bolivia</div>
+        <div><strong>Horario de atención</strong>Lunes a Sábado: 09:00 a 19:30 · Emergencias coordinadas por WhatsApp</div>
+        <div><strong>Servicios</strong>Vacunación, desparasitación, consultas clínicas y control preventivo</div>
+      </div>
+    </div>
+    <div class="sheet__footer">
+      <button type="button" class="btn btn--secondary btn--full" data-close-dialog>Cerrar</button>
+    </div>
+  </dialog>
+
+  <div class="toast-region" role="region" aria-label="Notificaciones">
+    <div id="toast" class="toast" popover="manual">
+      <span id="toast-msg"></span>
+      <button type="button" class="toast__close" popovertarget="toast" popovertargetaction="hide" aria-label="Cerrar aviso">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="toast-live" class="visually-hidden" aria-live="polite"></div>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

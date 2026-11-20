@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAF7F2">
+  <title>Café Altura — Tarjeta Digital de Sellos</title>
+  <meta name="description" content="Tarjeta digital de sellos sin app para Café Altura en Sopocachi, La Paz. Junta 8 sellos y lleva tu café gratis.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a href="#sellos-workspace" class="skip-link visually-hidden">Ir al contenido principal</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">
+        <a href="../../" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+          </svg>
+          Demos
+        </a>
+        <span class="topbar__divider" aria-hidden="true"></span>
+        <span class="topbar__brand">Café Altura</span>
+      </div>
+      <button type="button" class="topbar__cta" id="open-new-client-btn">+ Nuevo cliente</button>
+    </div>
+  </header>
+
+  <section class="cafe-header">
+    <div class="container cafe-header__grid">
+      <div>
+        <h1 class="cafe-title">Café Altura</h1>
+        <p class="cafe-meta">Sopocachi · La Paz · Junta 8 sellos y lleva tu café gratis</p>
+      </div>
+      <div class="mode-switch" role="group" aria-label="Cambiar vista">
+        <button type="button" class="mode-switch__btn" data-switch-view="caja" aria-pressed="true">Vista Caja (Dueño)</button>
+        <button type="button" class="mode-switch__btn" data-switch-view="cliente" aria-pressed="false">Vista Cliente (Tarjeta)</button>
+      </div>
+    </div>
+  </section>
+
+  <main id="sellos-workspace" class="sellos-main" tabindex="-1">
+    <div class="container">
+      <!-- VISTA CAJA -->
+      <section class="view-panel" id="view-caja">
+        <div class="center-col">
+          <div class="lookup-card">
+            <form class="search-form" id="phone-search-form">
+              <label for="phone-search-input" class="visually-hidden">Buscar cliente por celular</label>
+              <input id="phone-search-input" type="text" inputmode="numeric" placeholder="Celular del cliente (ej. 70123456)" enterkeyhint="search">
+              <button type="submit" class="btn btn--primary">Buscar</button>
+            </form>
+            <div class="chips-row" id="caja-chips"></div>
+          </div>
+
+          <div id="cashier-card-host"></div>
+        </div>
+      </section>
+
+      <!-- VISTA CLIENTE -->
+      <section class="view-panel" id="view-cliente" hidden>
+        <div class="center-col">
+          <div class="chips-row" id="client-chips"></div>
+          <div id="client-card-host"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="cafe-footer">
+    <div class="container cafe-footer__inner">
+      <span>Café Altura · Tarjeta de fidelidad sin app ni cartón</span>
+      <button type="button" class="reset-link" id="reset-demo-btn">Restaurar datos demo</button>
+    </div>
+  </footer>
+
+  <!-- Modal: Nuevo Cliente -->
+  <dialog class="sheet" id="new-client-dialog" closedby="any" aria-labelledby="new-client-title">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <div class="sheet__header">
+      <h2 class="sheet__title" id="new-client-title">Registrar nuevo cliente</h2>
+      <button type="button" class="sheet__close" data-close-dialog aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sheet__body">
+      <form class="form-stack" id="new-client-form">
+        <div class="field">
+          <label for="nc-name">Nombre *</label>
+          <input id="nc-name" name="name" type="text" required autocomplete="name" placeholder="Ej. Mariana">
+        </div>
+        <div class="field">
+          <label for="nc-phone">Celular (8 dígitos) *</label>
+          <input id="nc-phone" name="phone" type="tel" inputmode="numeric" required placeholder="Ej. 72011223">
+        </div>
+      </form>
+    </div>
+    <div class="sheet__footer">
+      <button type="submit" form="new-client-form" class="btn btn--primary btn--full">Crear tarjeta con 1 sello inicial</button>
+    </div>
+  </dialog>
+
+  <div class="toast-region" role="region" aria-label="Notificaciones">
+    <div id="toast" class="toast" popover="manual">
+      <span id="toast-msg"></span>
+      <button type="button" class="toast__close" popovertarget="toast" popovertargetaction="hide" aria-label="Cerrar aviso">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="toast-live" class="visually-hidden" aria-live="polite"></div>
+  </div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

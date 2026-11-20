@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es" data-theme="pasteleria">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FAF8F5">
+  <title>Miga &amp; Crema — Pastelería Artesanal y Café</title>
+  <meta name="description" content="Tortas enteras por encargo, porciones del día y cafetería en Sopocachi, La Paz.">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../../assets/menu-qr/menu-engine.css">
+</head>
+<body>
+  <div id="menu-app"></div>
+  <script src="../../assets/menu-qr/menu-engine.js"></script>
+  <script>
+    window.initMenuQR({
+      id: 'pasteleria-miga-crema',
+      name: 'Miga & Crema',
+      subtitle: 'Sopocachi · Pastelería artesanal y café',
+      badge: 'Horneado diario',
+      zoneInfo: 'Plaza Avaroa · Pedidos y encargos',
+      qrHolder: 'Miga & Crema SRL (Cuenta demo)',
+      categories: [
+        { id: 'tortas', label: 'Tortas Enteras' },
+        { id: 'porciones', label: 'Porciones' },
+        { id: 'cafeteria', label: 'Cafetería' },
+        { id: 'cajas', label: 'Cajas Regalo' },
+      ],
+      fulfillmentModes: [
+        { id: 'hoy', label: 'Recoger hoy en tienda', hint: 'Sopocachi' },
+        { id: 'encargo', label: 'Encargo con fecha/hora', hint: 'Programado' },
+        { id: 'delivery', label: 'Delivery por zona', hint: 'Bs 10–12' },
+      ],
+      items: [
+        {
+          id: 'torta-tres-leches',
+          category: 'tortas',
+          name: 'Torta Tres Leches',
+          tag: 'Más pedida',
+          description: 'Bizcochuelo húmedo en tres leches con crema batida ligera y toque de canela.',
+          price: 115,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'tamano',
+              label: 'Tamaño de torta',
+              shortLabel: 'Tamaño',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: '8p', label: '8 porciones', delta: 0 },
+                { id: '15p', label: '15 porciones', delta: 45 },
+                { id: '25p', label: '25 porciones', delta: 95 },
+              ],
+            },
+            {
+              id: 'dedicatoria',
+              label: 'Dedicatoria en la torta',
+              shortLabel: 'Dedicatoria',
+              type: 'text',
+              placeholder: 'Ej. Feliz cumple Mamá',
+            },
+          ],
+        },
+        {
+          id: 'torta-selva-negra',
+          category: 'tortas',
+          name: 'Torta Selva Negra',
+          description: 'Bizcocho de cacao amargo, cerezas maceradas y crema chantilly natural.',
+          price: 125,
+          priceFrom: true,
+          image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'tamano',
+              label: 'Tamaño de torta',
+              shortLabel: 'Tamaño',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: '8p', label: '8 porciones', delta: 0 },
+                { id: '15p', label: '15 porciones', delta: 45 },
+                { id: '25p', label: '25 porciones', delta: 85 },
+              ],
+            },
+            {
+              id: 'dedicatoria',
+              label: 'Dedicatoria en la torta',
+              shortLabel: 'Dedicatoria',
+              type: 'text',
+              placeholder: 'Ej. ¡Felicidades Sofía!',
+            },
+          ],
+        },
+        {
+          id: 'cheesecake-frutos',
+          category: 'porciones',
+          name: 'Cheesecake de Frutos Rojos',
+          description: 'Base crocante de galleta, crema horneada suave y coulis de frutos rojos.',
+          price: 28,
+          image: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'extra-salsa',
+              label: 'Complemento',
+              shortLabel: 'Extra',
+              type: 'checkbox',
+              options: [
+                { id: 'coulis', label: 'Extra coulis de frutos rojos', delta: 5 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'brownie-artesanal',
+          category: 'porciones',
+          name: 'Brownie Artesanal',
+          description: 'Chocolate 70% cacao con nueces tostadas y centro húmedo.',
+          price: 18,
+          image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'servido',
+              label: 'Cómo lo prefieres',
+              shortLabel: 'Servido',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'tibio', label: 'Tibio clásico', delta: 0 },
+                { id: 'helado', label: 'Con bola de helado de vainilla', delta: 8 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'latte-frio',
+          category: 'cafeteria',
+          name: 'Latte Frío',
+          description: 'Doble espresso de café yungueño sobre hielo y leche texturizada.',
+          price: 22,
+          image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'leche',
+              label: 'Tipo de leche',
+              shortLabel: 'Leche',
+              type: 'radio',
+              required: true,
+              options: [
+                { id: 'entera', label: 'Leche entera', delta: 0 },
+                { id: 'deslactosada', label: 'Leche deslactosada', delta: 0 },
+                { id: 'almendra', label: 'Bebida de almendra', delta: 5 },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'caja-regalo',
+          category: 'cajas',
+          name: 'Caja Regalo x6 Mini Postres',
+          tag: 'Para regalar',
+          description: 'Surtido de 2 brownies, 2 mini cheesecakes y 2 alfajores con lazo.',
+          price: 85,
+          image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80',
+          modifiers: [
+            {
+              id: 'tarjeta',
+              label: 'Mensaje en tarjeta',
+              shortLabel: 'Tarjeta',
+              type: 'text',
+              placeholder: 'Ej. Con mucho cariño',
+            },
+          ],
+        },
+      ],
+    });
+  </script>
+</body>
+</html>
