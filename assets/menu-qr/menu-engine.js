@@ -1,5 +1,5 @@
 (() => {
-  const WHATSAPP_NUMBER = '59175233556';
+  const WHATSAPP_NUMBER = '59177398405';
 
   const LA_PAZ_ZONES = [
     { id: 'sopocachi', label: 'Sopocachi', cost: 10 },

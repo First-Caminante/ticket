@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es-BO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Comercial Altiplano · Punto de Venta, Inventario & Caja (Bs) | etc</title>
+  <meta name="description" content="Sistema comercial de Punto de Venta (POS), inventario en tiempo real y control de caja diario en bolivianos (Bs). Demo interactiva por etc.">
+  <meta name="theme-color" content="#F8FAFC">
+  <link rel="icon" type="image/svg+xml" href="../../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!-- Mobile Top Header -->
+  <header class="mobile-header">
+    <div class="mobile-header__left">
+      <a href="../../" class="mobile-back" aria-label="Volver a etc">← etc</a>
+      <div>
+        <div class="brand__name">Comercial Altiplano</div>
+        <span class="brand__sub">POS & Caja · Bs</span>
+      </div>
+    </div>
+    <button type="button" class="reset-btn" data-reset-demo>Restaurar</button>
+  </header>
+
+  <div class="app-shell">
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar" aria-label="Navegación del sistema">
+      <div>
+        <a href="../../" class="sidebar__back">← Volver a etc</a>
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">CA</div>
+          <div>
+            <div class="brand__name">Comercial Altiplano</div>
+            <span class="brand__sub">Punto de Venta & Stock · Bs</span>
+          </div>
+        </div>
+
+        <nav class="nav-list">
+          <button type="button" class="nav-btn" data-nav-mod="pos" aria-current="page">
+            <span>Punto de Venta (POS)</span>
+          </button>
+          <button type="button" class="nav-btn" data-nav-mod="inventory" aria-current="false">
+            <span>Inventario</span>
+            <span class="nav-badge tnum" data-low-badge>3</span>
+          </button>
+          <button type="button" class="nav-btn" data-nav-mod="cash" aria-current="false">
+            <span>Control de Caja</span>
+          </button>
+          <button type="button" class="nav-btn" data-nav-mod="stats" aria-current="false">
+            <span>Estadísticas</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar__foot">
+        <button type="button" class="reset-btn" data-reset-demo>Restaurar datos demo</button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main">
+      <!-- ==================== MODULE 1: POS ==================== -->
+      <section data-module-view="pos">
+        <div class="module-head">
+          <div>
+            <h1 class="module-title">Punto de Venta Rápido</h1>
+            <p class="module-sub">Toca un producto para sumarlo al ticket. El stock y la caja se actualizan al instante.</p>
+          </div>
+        </div>
+
+        <div class="pos-grid">
+          <div>
+            <div class="pos-controls">
+              <input id="pos-search" type="search" class="input" placeholder="Buscar por nombre o SKU (ej. Taladro, ILU-201)..." aria-label="Buscar producto por nombre o SKU">
+              <div class="pills-row" role="group" aria-label="Filtrar por categoría">
+                <button type="button" class="pill" data-pos-cat="Todos" aria-pressed="true">Todos</button>
+                <button type="button" class="pill" data-pos-cat="Ferretería" aria-pressed="false">Ferretería</button>
+                <button type="button" class="pill" data-pos-cat="Iluminación" aria-pressed="false">Iluminación</button>
+                <button type="button" class="pill" data-pos-cat="Eléctrico" aria-pressed="false">Eléctrico</button>
+                <button type="button" class="pill" data-pos-cat="Accesorios" aria-pressed="false">Accesorios</button>
+              </div>
+            </div>
+
+            <div id="pos-products" class="products-grid"></div>
+          </div>
+
+          <aside class="panel ticket-panel" aria-label="Ticket de venta actual">
+            <div class="ticket-head">
+              <h2 style="font-size:1rem;font-weight:700;">Ticket de venta</h2>
+              <button type="button" id="clear-cart-btn" class="btn btn--outline btn--sm" hidden>Limpiar</button>
+            </div>
+
+            <div id="ticket-items" class="ticket-items"></div>
+
+            <div>
+              <div style="font-size:0.75rem;font-weight:600;color:#475569;margin-block-end:0.375rem;">Método de pago</div>
+              <div class="pay-tabs" role="group" aria-label="Método de pago">
+                <button type="button" class="pay-tab" data-pay-method="Efectivo" aria-pressed="true">Efectivo</button>
+                <button type="button" class="pay-tab" data-pay-method="QR Simple" aria-pressed="false">QR Simple</button>
+              </div>
+            </div>
+
+            <div id="cash-pay-box" class="cash-box">
+              <div class="field">
+                <label for="cash-paid-input">Paga con (Bs)</label>
+                <input id="cash-paid-input" type="number" min="0" step="0.5" inputmode="decimal" class="input tnum" placeholder="Ej. 200">
+              </div>
+              <div class="quick-bills">
+                <button type="button" class="bill-btn" data-bill="exact">Exacto</button>
+                <button type="button" class="bill-btn tnum" data-bill="50">Bs 50</button>
+                <button type="button" class="bill-btn tnum" data-bill="100">Bs 100</button>
+                <button type="button" class="bill-btn tnum" data-bill="200">Bs 200</button>
+              </div>
+              <div class="change-row">
+                <span>Cambio / vuelto</span>
+                <strong id="cash-change-val" class="tnum">Bs 0</strong>
+              </div>
+            </div>
+
+            <div id="qr-pay-box" class="cash-box" hidden>
+              <p style="font-size:0.8125rem;color:#475569;">Muestra el código QR oficial de Comercial Altiplano para cobrar al instante.</p>
+              <button type="button" id="show-qr-btn" class="btn btn--outline btn--sm">Mostrar QR de cobro</button>
+            </div>
+
+            <div class="ticket-total">
+              <span>Total a cobrar</span>
+              <strong id="ticket-total-val" class="tnum">Bs 0</strong>
+            </div>
+
+            <button type="button" id="checkout-btn" class="btn btn--emerald" disabled>Cobrar y emitir recibo</button>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ==================== MODULE 2: INVENTORY ==================== -->
+      <section data-module-view="inventory" hidden>
+        <div class="module-head">
+          <div>
+            <h1 class="module-title">Inventario y Reposición</h1>
+            <p class="module-sub">Control de costos, márgenes y reposición rápida en tiempo real.</p>
+          </div>
+          <button type="button" id="open-new-prod-btn" class="btn btn--primary">+ Nuevo producto</button>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <span class="kpi-label">Total de productos</span>
+            <strong id="inv-kpi-count" class="kpi-value tnum">10 SKUs</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Valor del inventario (Venta)</span>
+            <strong id="inv-kpi-value" class="kpi-value kpi-value--emerald tnum">Bs 0</strong>
+            <span id="inv-kpi-cost" class="kpi-note tnum">Costo: Bs 0</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Alertas de stock bajo / agotado</span>
+            <strong id="inv-kpi-low" class="kpi-value kpi-value--amber tnum">0</strong>
+          </div>
+        </div>
+
+        <div class="pills-row" style="margin-block-end:0.875rem;" role="group" aria-label="Filtrar inventario">
+          <button type="button" class="pill" data-inv-filter="all" aria-pressed="true">Todos</button>
+          <button type="button" class="pill" data-inv-filter="low" aria-pressed="false">Stock bajo</button>
+          <button type="button" class="pill" data-inv-filter="out" aria-pressed="false">Agotados</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Producto</th>
+                <th class="num-col">Costo</th>
+                <th class="num-col">Precio Venta</th>
+                <th class="num-col">Margen</th>
+                <th>Stock</th>
+                <th class="num-col">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="inv-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== MODULE 3: CASH CONTROL ==================== -->
+      <section data-module-view="cash" hidden>
+        <div class="module-head">
+          <div>
+            <h1 class="module-title">Control de Caja y Cierre Diario</h1>
+            <p class="module-sub">Movimientos en bolivianos (Bs), ganancia bruta real y exportación para Excel.</p>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button type="button" id="open-expense-btn" class="btn btn--outline">+ Registrar gasto o retiro</button>
+            <button type="button" id="export-csv-btn" class="btn btn--primary">Exportar cierre CSV</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card"><span class="kpi-label">Ventas del día</span><strong id="cash-sales" class="kpi-value kpi-value--emerald tnum">Bs 0</strong></div>
+          <div class="kpi-card"><span class="kpi-label">Ingresos en Efectivo</span><strong id="cash-efectivo" class="kpi-value tnum">Bs 0</strong></div>
+          <div class="kpi-card"><span class="kpi-label">Ingresos por QR Simple</span><strong id="cash-qr" class="kpi-value tnum">Bs 0</strong></div>
+          <div class="kpi-card"><span class="kpi-label">Gastos / Retiros</span><strong id="cash-expenses" class="kpi-value kpi-value--red tnum">Bs 0</strong></div>
+          <div class="kpi-card"><span class="kpi-label">Ganancia Bruta Estimada</span><strong id="cash-profit" class="kpi-value kpi-value--emerald tnum">Bs 0</strong></div>
+          <div class="kpi-card"><span class="kpi-label">Saldo Neto en Caja</span><strong id="cash-net" class="kpi-value tnum">Bs 0</strong></div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hora</th>
+                <th>Tipo</th>
+                <th>Detalle del movimiento</th>
+                <th>Método</th>
+                <th class="num-col">Monto (Bs)</th>
+                <th class="num-col">Ganancia</th>
+              </tr>
+            </thead>
+            <tbody id="cash-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ==================== MODULE 4: STATS ==================== -->
+      <section data-module-view="stats" hidden>
+        <div class="module-head">
+          <div>
+            <h1 class="module-title">Estadísticas del Negocio</h1>
+            <p class="module-sub">Desempeño de los últimos 7 días actualizado en vivo con cada cobro.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="panel">
+            <h2 style="font-size:1rem;font-weight:700;">Ventas de los últimos 7 días (Bs)</h2>
+            <p style="font-size:0.8125rem;color:#64748B;margin-block-start:0.2rem;">La barra verde corresponde al día de hoy en tiempo real.</p>
+            <div id="stats-bar-chart" class="bar-chart"></div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="panel">
+              <h2 style="font-size:1rem;font-weight:700;">Top 5 productos más vendidos</h2>
+              <div id="stats-top5" class="rank-list"></div>
+            </div>
+
+            <div class="panel">
+              <h2 style="font-size:1rem;font-weight:700;">Efectivo vs. QR Simple (Hoy)</h2>
+              <div class="split-bar" aria-hidden="true">
+                <div id="split-cash-bar" class="split-bar__cash" style="width:50%;"></div>
+                <div id="split-qr-bar" class="split-bar__qr" style="width:50%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;gap:0.75rem;font-size:0.8125rem;flex-wrap:wrap;">
+                <span id="split-cash-label" class="tnum" style="color:#047857;font-weight:600;">Efectivo: Bs 0</span>
+                <span id="split-qr-label" class="tnum" style="color:#0F172A;font-weight:600;">QR Simple: Bs 0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav" aria-label="Navegación móvil">
+    <button type="button" class="bottom-nav__btn" data-nav-mod="pos" aria-current="page"><span>POS</span></button>
+    <button type="button" class="bottom-nav__btn" data-nav-mod="inventory" aria-current="false"><span>Stock</span></button>
+    <button type="button" class="bottom-nav__btn" data-nav-mod="cash" aria-current="false"><span>Caja</span></button>
+    <button type="button" class="bottom-nav__btn" data-nav-mod="stats" aria-current="false"><span>Stats</span></button>
+  </nav>
+
+  <!-- Modal: Receipt -->
+  <dialog id="receipt-modal" class="pos-modal" aria-labelledby="receipt-title">
+    <div class="modal-head">
+      <h2 id="receipt-title" style="font-size:1.0625rem;">Venta registrada</h2>
+      <button type="button" class="btn btn--outline btn--sm" data-close-modal>Cerrar</button>
+    </div>
+    <div class="modal-body">
+      <div id="receipt-content" class="receipt-box"></div>
+    </div>
+    <div class="modal-foot">
+      <a id="receipt-wa-btn" href="https://wa.me/59177398405" class="btn btn--emerald" target="_blank" rel="noopener noreferrer">Enviar comprobante por WhatsApp</a>
+    </div>
+  </dialog>
+
+  <!-- Modal: QR Simple -->
+  <dialog id="qr-modal" class="pos-modal" aria-labelledby="qr-title">
+    <div class="modal-head">
+      <h2 id="qr-title" style="font-size:1.0625rem;">Cobro por QR Simple</h2>
+      <button type="button" class="btn btn--outline btn--sm" data-close-modal>Cerrar</button>
+    </div>
+    <div class="modal-body" style="text-align:center;">
+      <p style="font-size:0.875rem;color:#475569;">Comercial Altiplano · Cuenta Banco Unión / BNB (Demo)</p>
+      <div class="qr-frame">
+        <svg width="176" height="176" viewBox="0 0 21 21" fill="#0F172A" aria-label="Código QR de cobro demo">
+          <rect width="21" height="21" fill="#FFFFFF"/>
+          <path d="M1 1h7v7H1zM2 2v5h5V2zM3 3h3v3H3zM13 1h7v7h-7zM14 2v5h5V2zM15 3h3v3h-3zM1 13h7v7H1zM2 14v5h5v-5zM3 15h3v3H3zM9 2h2v2H9zM9 6h1v3H9zM11 5h1v4h-1zM9 10h3v2H9zM13 10h2v1h-2zM16 9h3v2h-3zM14 12h2v3h-2zM17 13h3v2h-3zM9 14h3v2H9zM13 16h3v4h-3zM17 17h3v3h-3zM9 18h2v2H9z"/>
+        </svg>
+      </div>
+      <strong id="qr-amount-label" class="tnum" style="font-size:1.5rem;">Bs 0</strong>
+      <p style="font-size:0.75rem;color:#64748B;">Una vez confirmado el pago, presiona "Cobrar y emitir recibo".</p>
+    </div>
+  </dialog>
+
+  <!-- Modal: Restock -->
+  <dialog id="restock-modal" class="pos-modal" aria-labelledby="restock-title">
+    <div class="modal-head">
+      <h2 id="restock-title" style="font-size:1.0625rem;">Reponer mercadería</h2>
+      <button type="button" class="btn btn--outline btn--sm" data-close-modal>Cerrar</button>
+    </div>
+    <form id="restock-form">
+      <div class="modal-body">
+        <p id="restock-prod-name" style="font-size:0.875rem;font-weight:600;"></p>
+        <div class="field">
+          <label for="restock-qty">Unidades a ingresar</label>
+          <input id="restock-qty" type="number" min="1" value="10" required class="input tnum">
+        </div>
+        <div class="quick-bills">
+          <button type="button" class="bill-btn tnum" data-quick-restock="5">+5</button>
+          <button type="button" class="bill-btn tnum" data-quick-restock="10">+10</button>
+          <button type="button" class="bill-btn tnum" data-quick-restock="20">+20</button>
+          <button type="button" class="bill-btn tnum" data-quick-restock="50">+50</button>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn btn--emerald">Confirmar reposición</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: New Product -->
+  <dialog id="new-prod-modal" class="pos-modal" aria-labelledby="new-prod-title">
+    <div class="modal-head">
+      <h2 id="new-prod-title" style="font-size:1.0625rem;">Nuevo producto</h2>
+      <button type="button" class="btn btn--outline btn--sm" data-close-modal>Cerrar</button>
+    </div>
+    <form id="new-prod-form">
+      <div class="modal-body form-grid">
+        <div class="form-row-2">
+          <div class="field"><label for="np-sku">SKU</label><input id="np-sku" name="sku" required class="input" placeholder="FER-109"></div>
+          <div class="field">
+            <label for="np-cat">Categoría</label>
+            <select id="np-cat" name="category" class="select">
+              <option>Ferretería</option>
+              <option>Iluminación</option>
+              <option>Eléctrico</option>
+              <option>Accesorios</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="np-name">Nombre del producto</label><input id="np-name" name="name" required class="input" placeholder="Ej. Destornillador Aislado"></div>
+        <div class="form-row-2">
+          <div class="field"><label for="np-cost">Costo (Bs)</label><input id="np-cost" name="cost" type="number" min="0" step="0.5" required class="input tnum"></div>
+          <div class="field"><label for="np-price">Precio venta (Bs)</label><input id="np-price" name="price" type="number" min="0" step="0.5" required class="input tnum"></div>
+        </div>
+        <div class="form-row-2">
+          <div class="field"><label for="np-stock">Stock inicial</label><input id="np-stock" name="stock" type="number" min="0" required class="input tnum" value="10"></div>
+          <div class="field"><label for="np-min">Stock mínimo</label><input id="np-min" name="minStock" type="number" min="1" required class="input tnum" value="3"></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn btn--primary">Guardar producto</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: Register Expense -->
+  <dialog id="expense-modal" class="pos-modal" aria-labelledby="expense-title">
+    <div class="modal-head">
+      <h2 id="expense-title" style="font-size:1.0625rem;">Registrar gasto o retiro</h2>
+      <button type="button" class="btn btn--outline btn--sm" data-close-modal>Cerrar</button>
+    </div>
+    <form id="expense-form">
+      <div class="modal-body form-grid">
+        <div class="field"><label for="ex-concept">Concepto</label><input id="ex-concept" name="concept" required class="input" placeholder="Ej. Pasajes, bolsas, pago proveedor"></div>
+        <div class="form-row-2">
+          <div class="field"><label for="ex-amount">Monto (Bs)</label><input id="ex-amount" name="amount" type="number" min="1" step="0.5" required class="input tnum"></div>
+          <div class="field">
+            <label for="ex-method">Origen</label>
+            <select id="ex-method" name="method" class="select">
+              <option>Efectivo</option>
+              <option>QR Simple</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="submit" class="btn btn--primary">Registrar en caja</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 (() => {
-  const DEFAULT_WA_NUMBER = '59175233556';
+  const DEFAULT_WA_NUMBER = '59177398405';
 
   function escapeHtml(str) {
     return String(str ?? '')
@@ -220,7 +220,7 @@
               </div>
               <div class="field">
                 <label for="no-phone">WhatsApp (+591)</label>
-                <input id="no-phone" name="phone" type="tel" inputmode="tel" placeholder="75233556">
+                <input id="no-phone" name="phone" type="tel" inputmode="tel" placeholder="77398405">
               </div>
             </div>
 

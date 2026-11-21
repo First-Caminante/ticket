@@ -1,6 +1,6 @@
 (() => {
   const STORAGE_KEY = 'patitas_del_sur_pets_v1';
-  const WA_CLINIC = '59175233556';
+  const WA_CLINIC = '59177398405';
 
   const SEED_PETS = [
     {
@@ -12,7 +12,7 @@
       age: '3 años',
       weight: '14.5 kg',
       tutor: 'Carla M.',
-      phone: '75233556',
+      phone: '77398405',
       vaccines: [
         { name: 'Antirrábica', applied: '23 Nov 2025', nextDue: 'En 3 días', status: 'pronto', statusLabel: 'Próximo refuerzo (en 3 días)' },
         { name: 'Séxtuple Canina', applied: '14 Ago 2026', nextDue: '14 Ago 2027', status: 'al-dia', statusLabel: 'Al día' },
@@ -28,7 +28,7 @@
       age: '1 año',
       weight: '3.8 kg',
       tutor: 'Diego R.',
-      phone: '75233556',
+      phone: '77398405',
       vaccines: [
         { name: 'Triple Felina', applied: '10 Sep 2026', nextDue: '10 Sep 2027', status: 'al-dia', statusLabel: 'Al día' },
         { name: 'Desparasitación', applied: '15 Ago 2026', nextDue: 'Hace 5 días', status: 'vencida', statusLabel: 'Vencida (hace 5 días)' },
@@ -43,7 +43,7 @@
       age: '5 años',
       weight: '31 kg',
       tutor: 'Sofía P.',
-      phone: '75233556',
+      phone: '77398405',
       vaccines: [
         { name: 'Antirrábica', applied: '05 Jun 2026', nextDue: '05 Jun 2027', status: 'al-dia', statusLabel: 'Al día' },
         { name: 'Séxtuple Canina', applied: '05 Jun 2026', nextDue: '05 Jun 2027', status: 'al-dia', statusLabel: 'Al día' },

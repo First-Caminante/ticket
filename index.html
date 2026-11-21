@@ -3,380 +3,591 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#FAFAF9">
-  <title>Demos Interactivas — Soluciones Web para Negocios</title>
-  <meta name="description" content="Centro de demostraciones interactivas para comercios, gastronomía, talleres y servicios.">
+  <meta name="theme-color" content="#2C2C30">
+  <title>etc · Soluciones Digitales a Medida en La Paz, Bolivia</title>
+  <meta name="description" content="Creamos páginas de aterrizaje para ventas, catálogos WhatsApp, menús QR, inventarios y apps web (PWA) listas para usar en celular y PC.">
   <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
   <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-  <a href="#contenido-principal" class="skip-link visually-hidden">Ir al catálogo de demos</a>
+  <!-- Reusable Organic Zen Enso SVG Symbol (sumi-e open brushstroke + subtle amber gold accent) -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <symbol id="enso-mark" viewBox="0 0 120 120">
+        <path fill="currentColor" d="M67.8 14.2c-24.2-3.7-47.1 12.6-51.4 36.9-4.5 24.7 11.8 48.3 36.5 52.6 18.8 3.3 37.2-5.3 46.6-21.1 1.4-2.4-.4-5.4-3.1-5.1-2.8.4-5.2 2.2-6.9 4.5-8 10.8-21.6 16.4-35.1 13.9-19-3.5-31.5-21.4-28.2-40.4 3.1-18.1 20-30.6 38.2-28.3 9.2 1.2 17.4 5.9 23.1 12.9 1.4 1.7 3.9 1.4 4.9-.5 1.6-3 .5-7.1-2.2-9.8-6.4-6.7-14.5-14.1-22.3-15.6Z"/>
+        <path fill="#E2B46C" d="M99.4 45.8c3.2 7.2 3.8 15.6 1.6 23.5-.6 2.2-3.4 2.8-4.8 1-1.2-1.6-1.2-3.9-.6-5.9 1.6-5.3 1.2-11.1-1-16.2-1-2.2.6-4.7 2.9-4.3 1 .2 1.6.9 1.9 1.9Z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-  <header class="site-header">
-    <div class="container header-row">
-      <div class="header-brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-          </svg>
-        </span>
-        <span class="brand-label">Centro de Demos</span>
-      </div>
-      <h1 class="site-title">Demos Interactivas — Soluciones Web para Negocios</h1>
-      <p class="site-subtitle">Micro-aplicaciones web rápidas pensadas para atender clientes desde el celular y organizar tu negocio sin instalar apps.</p>
+  <a href="#demos" class="skip-link visually-hidden">Ir a las demos en vivo</a>
+
+  <!-- 1. Minimal Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="#inicio" class="brand-lockup" aria-label="etc · Inicio">
+        <svg class="brand-lockup__enso" aria-hidden="true"><use href="#enso-mark"/></svg>
+        <span class="brand-lockup__text">etc</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#demos" class="nav-link">Demos</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#estandar" class="nav-link">Estándar</a>
+      </nav>
+
+      <a
+        href="https://wa.me/59177398405?text=Hola%20etc,%20escane%C3%A9%20su%20QR%20y%20quiero%20cotizar%20una%20soluci%C3%B3n%20para%20mi%20negocio"
+        class="btn btn--gold btn--sm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Cotizar por WhatsApp
+      </a>
     </div>
   </header>
 
-  <main id="contenido-principal" class="main-content" tabindex="-1">
-    <div class="container">
-      <div class="toolbar">
-        <div class="filter-scroll" role="group" aria-label="Filtrar demos por categoría" data-filter-bar>
-          <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">
-            Todas <span class="filter-pill__count">10</span>
-          </button>
-          <button type="button" class="filter-pill" data-filter="ventas" aria-pressed="false">
-            Ventas <span class="filter-pill__count">1</span>
-          </button>
-          <button type="button" class="filter-pill" data-filter="gastronomia" aria-pressed="false">
-            Gastronomía <span class="filter-pill__count">3</span>
-          </button>
-          <button type="button" class="filter-pill" data-filter="talleres" aria-pressed="false">
-            Talleres <span class="filter-pill__count">3</span>
-          </button>
-          <button type="button" class="filter-pill" data-filter="fidelizacion" aria-pressed="false">
-            Fidelización <span class="filter-pill__count">2</span>
-          </button>
-          <button type="button" class="filter-pill" data-filter="sistemas" aria-pressed="false">
-            Sistemas <span class="filter-pill__count">1</span>
-          </button>
+  <main id="inicio">
+    <!-- 2. Asymmetric Editorial Hero -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <p class="hero__eyebrow">SOLUCIONES DIGITALES · LA PAZ, BOLIVIA · ENTREGA RÁPIDA</p>
+          <h1 class="hero__title">Impulsa tu negocio con tecnología <span class="text-gold">a medida.</span></h1>
+          <p class="hero__subtitle">Creamos páginas de aterrizaje para ventas, catálogos WhatsApp, menús QR, inventarios y apps web (PWA) listas para usar en celular y PC.</p>
+
+          <div class="hero__actions">
+            <a href="#demos" class="btn btn--gold">Probar demos en vivo ↓</a>
+            <a
+              href="https://wa.me/59177398405?text=Hola%20etc,%20escane%C3%A9%20su%20QR%20y%20quiero%20cotizar%20una%20soluci%C3%B3n%20para%20mi%20negocio"
+              class="btn btn--outline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Escribir al 77398405
+            </a>
+          </div>
+
+          <div class="trust-row">
+            <span class="trust-item"><span class="trust-item__dot" aria-hidden="true"></span>Entrega rápida</span>
+            <span class="trust-item"><span class="trust-item__dot" aria-hidden="true"></span>Pago único en Bs</span>
+            <span class="trust-item"><span class="trust-item__dot" aria-hidden="true"></span>Seguridad HTTPS y legales incluidos</span>
+          </div>
         </div>
 
-        <p class="results-meta" aria-live="polite" data-results-count>10 demos</p>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="enso-study">
+            <svg class="enso-study__grid" viewBox="0 0 240 240" fill="none">
+              <line x1="120" y1="0" x2="120" y2="240" stroke="currentColor" stroke-width="1"/>
+              <line x1="0" y1="120" x2="240" y2="120" stroke="currentColor" stroke-width="1"/>
+              <circle cx="120" cy="120" r="88" stroke="currentColor" stroke-width="1" stroke-dasharray="3 4"/>
+              <circle cx="120" cy="120" r="56" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <svg class="enso-study__mark"><use href="#enso-mark"/></svg>
+            <div class="enso-study__caption">
+              <span>etc · estudio digital</span>
+              <span>16°30'S · LPZ</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="demo-grid" data-demo-grid>
-        <!-- Sistema Integral Destacado -->
-        <article class="demo-card" data-category="sistemas" style="view-transition-name: demo-prestamo-prendas;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="5" width="20" height="14" rx="2"/>
-                <line x1="2" y1="10" x2="22" y2="10"/>
-                <line x1="6" y1="15" x2="10" y2="15"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Sistema Integral</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
-            </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Préstamos sobre Prendas — Sistema Integral</h2>
-            <p class="demo-card__desc">Boletas con QR, renovaciones, flujo de caja en Bs y estadísticas en vivo.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Sistemas</span>
-            <a href="./demos/prestamo-prendas/" class="demo-card__link" aria-label="Abrir demo: Préstamos sobre Prendas — Sistema Integral">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+    <!-- 3. Centro de Demos Interactivas (#demos) -->
+    <section id="demos" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Prueba nuestras demos en vivo</h2>
+          <p class="section__sub">Todas funcionan directo desde tu celular, sin instalar nada.</p>
+        </div>
 
-        <!-- 1. Ventas -->
-        <article class="demo-card" data-category="ventas" style="view-transition-name: demo-catalogo-tiktok;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
-                <path d="M3 6h18"/>
-                <path d="M16 10a4 4 0 0 1-8 0"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Catálogo</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
-            </div>
+        <div class="demos-toolbar">
+          <div class="filter-scroll" role="group" aria-label="Filtrar demos por categoría" data-filter-bar>
+            <button type="button" class="filter-pill" data-filter="all" aria-pressed="true">
+              Todas <span class="filter-pill__count">12</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="ventas" aria-pressed="false">
+              Ventas <span class="filter-pill__count">2</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="gastronomia" aria-pressed="false">
+              Gastronomía <span class="filter-pill__count">3</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="talleres" aria-pressed="false">
+              Talleres <span class="filter-pill__count">3</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="gestion" aria-pressed="false">
+              Gestión <span class="filter-pill__count">2</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="fidelizacion" aria-pressed="false">
+              Fidelización <span class="filter-pill__count">2</span>
+            </button>
           </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Catálogo Express WhatsApp</h2>
-            <p class="demo-card__desc">Tienda de ropa y accesorios con carrito directo a WhatsApp.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Ventas</span>
-            <a href="./demos/catalogo-tiktok/" class="demo-card__link" aria-label="Abrir demo: Catálogo Express WhatsApp">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+          <p class="results-meta" aria-live="polite" data-results-count>12 demos</p>
+        </div>
 
-        <!-- 2. Gastronomía -->
-        <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pension;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
-                <path d="M7 2v20"/>
-                <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Menú QR</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+        <div class="demo-grid" data-demo-grid>
+          <!-- Gestión: Sistema Integral Prendario -->
+          <article class="demo-card" data-category="gestion" style="view-transition-name: demo-prestamo-prendas;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Sistema Integral</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Menú QR — Pensión y Almuerzos</h2>
-            <p class="demo-card__desc">Carta diaria rápida para platos del día y pedidos.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Gastronomía</span>
-            <a href="./demos/menu-pension/" class="demo-card__link" aria-label="Abrir demo: Menú QR — Pensión y Almuerzos">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Préstamos sobre Prendas · Sistema Integral</h3>
+              <p class="demo-card__desc">Boletas con QR, renovaciones, flujo de caja en Bs y estadísticas en vivo.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Gestión</span>
+              <a href="./demos/prestamo-prendas/" class="demo-card__link" aria-label="Abrir demo: Préstamos sobre Prendas · Sistema Integral">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pasteleria;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
-                <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/>
-                <path d="M2 21h20"/>
-                <path d="M7 8v3"/>
-                <path d="M12 8v3"/>
-                <path d="M17 8v3"/>
-                <path d="M7 4h.01"/>
-                <path d="M12 4h.01"/>
-                <path d="M17 4h.01"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Menú QR</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <!-- Ventas: Catálogo Express -->
+          <article class="demo-card" data-category="ventas" style="view-transition-name: demo-catalogo-tiktok;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Catálogo</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Menú QR — Pastelería</h2>
-            <p class="demo-card__desc">Catálogo visual de tortas, porciones y pedidos por encargo.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Gastronomía</span>
-            <a href="./demos/menu-pasteleria/" class="demo-card__link" aria-label="Abrir demo: Menú QR — Pastelería">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Catálogo Express WhatsApp</h3>
+              <p class="demo-card__desc">Tienda de ropa y accesorios con carrito directo a WhatsApp.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Ventas</span>
+              <a href="./demos/catalogo-tiktok/" class="demo-card__link" aria-label="Abrir demo: Catálogo Express WhatsApp">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pizzeria;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 11h.01"/>
-                <path d="M11 15h.01"/>
-                <path d="M16 16h.01"/>
-                <path d="m2 16 20 6-6-20A20 20 0 0 0 2 16"/>
-                <path d="M5.71 17.11a17.04 17.04 0 0 1 11.4-11.4"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Menú QR</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <!-- Gastronomía (3) -->
+          <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pension;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Menú QR</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Menú QR — Pizzería</h2>
-            <p class="demo-card__desc">Carta con tamaños, sabores combinados y delivery por zona.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Gastronomía</span>
-            <a href="./demos/menu-pizzeria/" class="demo-card__link" aria-label="Abrir demo: Menú QR — Pizzería">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Menú QR · Pensión y Almuerzos</h3>
+              <p class="demo-card__desc">Carta diaria rápida para platos del día y pedidos.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Gastronomía</span>
+              <a href="./demos/menu-pension/" class="demo-card__link" aria-label="Abrir demo: Menú QR · Pensión y Almuerzos">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <!-- 3. Talleres -->
-        <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-celulares;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                <path d="M12 18h.01"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Seguimiento</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pasteleria;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3"/><path d="M12 8v3"/><path d="M17 8v3"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Menú QR</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Rastreador — Taller de Celulares</h2>
-            <p class="demo-card__desc">Recepción, estado en vivo y aviso por WhatsApp.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Talleres</span>
-            <a href="./demos/taller-celulares/" class="demo-card__link" aria-label="Abrir demo: Rastreador — Taller de Celulares">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Menú QR · Pastelería</h3>
+              <p class="demo-card__desc">Catálogo visual de tortas, porciones y pedidos por encargo.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Gastronomía</span>
+              <a href="./demos/menu-pasteleria/" class="demo-card__link" aria-label="Abrir demo: Menú QR · Pastelería">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-ropa;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="6" cy="6" r="3"/>
-                <path d="M8.12 8.12 12 12"/>
-                <path d="M20 4 8.12 15.88"/>
-                <circle cx="6" cy="18" r="3"/>
-                <path d="M14.8 14.8 20 20"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Seguimiento</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <article class="demo-card" data-category="gastronomia" style="view-transition-name: demo-menu-pizzeria;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 11h.01"/><path d="M11 15h.01"/><path d="M16 16h.01"/><path d="m2 16 20 6-6-20A20 20 0 0 0 2 16"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Menú QR</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Rastreador — Clínica de Ropa</h2>
-            <p class="demo-card__desc">Control de prendas, arreglos y fecha de entrega.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Talleres</span>
-            <a href="./demos/taller-ropa/" class="demo-card__link" aria-label="Abrir demo: Rastreador — Clínica de Ropa">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Menú QR · Pizzería</h3>
+              <p class="demo-card__desc">Carta con tamaños, sabores combinados y delivery por zona.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Gastronomía</span>
+              <a href="./demos/menu-pizzeria/" class="demo-card__link" aria-label="Abrir demo: Menú QR · Pizzería">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-mecanico;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Seguimiento</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <!-- Talleres (3) -->
+          <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-celulares;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Seguimiento</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Rastreador — Taller Mecánico</h2>
-            <p class="demo-card__desc">Órdenes de servicio, presupuesto y estado del vehículo.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Talleres</span>
-            <a href="./demos/taller-mecanico/" class="demo-card__link" aria-label="Abrir demo: Rastreador — Taller Mecánico">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Rastreador · Taller de Celulares</h3>
+              <p class="demo-card__desc">Recepción, estado en vivo y aviso por WhatsApp.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Talleres</span>
+              <a href="./demos/taller-celulares/" class="demo-card__link" aria-label="Abrir demo: Rastreador · Taller de Celulares">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <!-- 4. Fidelización y Servicios -->
-        <article class="demo-card" data-category="fidelizacion" style="view-transition-name: demo-carnet-veterinaria;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-                <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Fidelización</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-ropa;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Seguimiento</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Carnet Digital de Vacunas</h2>
-            <p class="demo-card__desc">Historial de mascotas y alertas de refuerzo para veterinarias.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Fidelización y Servicios</span>
-            <a href="./demos/carnet-veterinaria/" class="demo-card__link" aria-label="Abrir demo: Carnet Digital de Vacunas">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Rastreador · Clínica de Ropa</h3>
+              <p class="demo-card__desc">Control de prendas, arreglos y fecha de entrega.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Talleres</span>
+              <a href="./demos/taller-ropa/" class="demo-card__link" aria-label="Abrir demo: Rastreador · Clínica de Ropa">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
 
-        <article class="demo-card" data-category="fidelizacion" style="view-transition-name: demo-tarjeta-sellos;">
-          <div class="demo-card__head">
-            <span class="demo-card__icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
-                <path d="m9 12 2 2 4-4"/>
-              </svg>
-            </span>
-            <div class="demo-card__badges">
-              <span class="badge badge--type">Fidelización</span>
-              <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+          <article class="demo-card" data-category="talleres" style="view-transition-name: demo-taller-mecanico;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Seguimiento</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
             </div>
-          </div>
-          <div class="demo-card__body">
-            <h2 class="demo-card__title">Tarjeta Digital de Sellos</h2>
-            <p class="demo-card__desc">Tarjeta de fidelidad sin app para cafeterías y comercios.</p>
-          </div>
-          <div class="demo-card__footer">
-            <span class="demo-card__category">Fidelización y Servicios</span>
-            <a href="./demos/tarjeta-sellos/" class="demo-card__link" aria-label="Abrir demo: Tarjeta Digital de Sellos">
-              Abrir demo
-              <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </article>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Rastreador · Taller Mecánico</h3>
+              <p class="demo-card__desc">Órdenes de servicio, presupuesto y estado del vehículo.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Talleres</span>
+              <a href="./demos/taller-mecanico/" class="demo-card__link" aria-label="Abrir demo: Rastreador · Taller Mecánico">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Fidelización (2) -->
+          <article class="demo-card" data-category="fidelizacion" style="view-transition-name: demo-carnet-veterinaria;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Fidelización</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Carnet Digital de Vacunas</h3>
+              <p class="demo-card__desc">Historial de mascotas y alertas de refuerzo para veterinarias.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Fidelización</span>
+              <a href="./demos/carnet-veterinaria/" class="demo-card__link" aria-label="Abrir demo: Carnet Digital de Vacunas">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card" data-category="fidelizacion" style="view-transition-name: demo-tarjeta-sellos;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="m9 12 2 2 4-4"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">Fidelización</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Tarjeta Digital de Sellos</h3>
+              <p class="demo-card__desc">Tarjeta de fidelidad sin app para cafeterías y comercios.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Fidelización</span>
+              <a href="./demos/tarjeta-sellos/" class="demo-card__link" aria-label="Abrir demo: Tarjeta Digital de Sellos">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Nuevas Demos Listas -->
+          <article class="demo-card" data-category="ventas" style="view-transition-name: demo-landing-ventas;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">9 Rubros</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Landing Pages de Ventas (9 Rubros)</h3>
+              <p class="demo-card__desc">Dental, Seguridad, Fitness, Ropa, Tenis, Veterinaria, Comida, Pastelería y Electrónica.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Ventas</span>
+              <a href="./demos/landing-ventas/" class="demo-card__link" aria-label="Abrir demo: Landing Pages de Ventas (9 Rubros)">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <article class="demo-card" data-category="gestion" style="view-transition-name: demo-inventario-caja;">
+            <div class="demo-card__head">
+              <span class="demo-card__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>
+                </svg>
+              </span>
+              <div class="demo-card__badges">
+                <span class="badge badge--type">POS & Caja</span>
+                <span class="badge badge--ready"><span class="status-dot" aria-hidden="true"></span>Lista</span>
+              </div>
+            </div>
+            <div class="demo-card__body">
+              <h3 class="demo-card__title">Sistema de Inventario y Caja en Bs</h3>
+              <p class="demo-card__desc">Punto de venta rápido, control de stock, cierre diario CSV y estadísticas en vivo.</p>
+            </div>
+            <div class="demo-card__footer">
+              <span class="demo-card__category">Gestión</span>
+              <a href="./demos/inventario-caja/" class="demo-card__link" aria-label="Abrir demo: Sistema de Inventario y Caja en Bs">
+                Abrir demo
+                <svg class="demo-card__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- 4. Servicios (#servicios) -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Qué construimos</h2>
+          <p class="section__sub">Herramientas concretas diseñadas para vender más y ordenar la operación diaria de tu negocio.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-item">
+            <div class="service-item__top">
+              <svg class="service-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/>
+              </svg>
+              <span class="service-item__num">01</span>
+            </div>
+            <h3 class="service-item__title">Páginas de aterrizaje para ventas</h3>
+            <p class="service-item__desc">Sitios rápidos diseñados para convertir visitas de TikTok, Facebook y QR en clientes por WhatsApp.</p>
+          </article>
+
+          <article class="service-item">
+            <div class="service-item__top">
+              <svg class="service-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3z M19 19h2v2h-2z"/>
+              </svg>
+              <span class="service-item__num">02</span>
+            </div>
+            <h3 class="service-item__title">Catálogos online y Menús QR</h3>
+            <p class="service-item__desc">Pedidos estructurados a WhatsApp sin pagar comisiones por venta.</p>
+          </article>
+
+          <article class="service-item">
+            <div class="service-item__top">
+              <svg class="service-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <span class="service-item__num">03</span>
+            </div>
+            <h3 class="service-item__title">Sistemas de inventario y control de caja</h3>
+            <p class="service-item__desc">Control de stock, ventas diarias, estadísticas y flujo en bolivianos.</p>
+          </article>
+
+          <article class="service-item">
+            <div class="service-item__top">
+              <svg class="service-item__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
+              </svg>
+              <span class="service-item__num">04</span>
+            </div>
+            <h3 class="service-item__title">Gestión operativa y Apps Web (PWA)</h3>
+            <p class="service-item__desc">Talleres, órdenes con QR, préstamos sobre prendas, reservas y soluciones a medida.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Estándar profesional incluido (#estandar) -->
+    <section id="estandar" class="section section--band">
+      <div class="container standard-layout">
+        <div class="standard-lead">
+          <span class="shield-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </span>
+          <h2 class="section__title">Estándar profesional incluido</h2>
+          <p class="section__sub">Cada entrega incluye base técnica segura y documentación legal lista desde el primer día, sin costos sorpresa.</p>
+        </div>
+
+        <ul class="standard-list">
+          <li class="standard-card">
+            <h3 class="standard-card__title">Seguridad HTTPS</h3>
+            <p class="standard-card__desc">Conexión cifrada con certificado SSL y candado activo en todos los navegadores.</p>
+          </li>
+          <li class="standard-card">
+            <h3 class="standard-card__title">Política de Privacidad y Protección de Datos</h3>
+            <p class="standard-card__desc">Transparencia sobre el tratamiento de datos de tus clientes y contacto por WhatsApp.</p>
+          </li>
+          <li class="standard-card">
+            <h3 class="standard-card__title">Términos y Condiciones de Uso</h3>
+            <p class="standard-card__desc">Reglas claras de uso, pedidos, reservas y responsabilidad del comercio.</p>
+          </li>
+          <li class="standard-card">
+            <h3 class="standard-card__title">Aviso de Cookies y optimización móvil</h3>
+            <p class="standard-card__desc">Carga ligera pensada para datos móviles en La Paz y cumplimiento de aviso de cookies.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. CTA Final -->
+    <section class="cta-band">
+      <div class="container cta-box">
+        <div>
+          <h2 class="cta-box__title">¿Quieres ver una prueba con el nombre de tu negocio?</h2>
+          <p class="cta-box__sub">Escríbenos por WhatsApp y te mostramos una propuesta práctica en bolivianos.</p>
+        </div>
+        <a
+          href="https://wa.me/59177398405?text=Hola%20etc,%20quiero%20ver%20una%20prueba%20con%20el%20nombre%20de%20mi%20negocio"
+          class="btn btn--gold"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Escribir por WhatsApp · 77398405
+        </a>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer Legal Completo con Marca de Agua Zen Enso -->
   <footer class="site-footer">
+    <svg class="footer-watermark" aria-hidden="true"><use href="#enso-mark"/></svg>
     <div class="container footer-inner">
-      <span>Demostraciones interactivas para negocios locales</span>
-      <span>Funcionan directo desde el navegador</span>
+      <div class="footer-brand">
+        <a href="#inicio" class="brand-lockup">
+          <svg class="brand-lockup__enso" aria-hidden="true"><use href="#enso-mark"/></svg>
+          <span class="brand-lockup__text">etc</span>
+        </a>
+        <p class="footer-meta">Soluciones digitales a medida · La Paz, Bolivia · WhatsApp 77398405</p>
+      </div>
+
+      <div class="legal-links">
+        <button type="button" class="legal-btn" data-legal="privacidad">Política de Privacidad</button>
+        <button type="button" class="legal-btn" data-legal="terminos">Términos de Uso</button>
+        <button type="button" class="legal-btn" data-legal="cookies">Política de Cookies</button>
+      </div>
     </div>
   </footer>
+
+  <!-- Legal Modal (<dialog>) -->
+  <dialog class="legal-modal" id="legal-modal" closedby="any" aria-labelledby="legal-modal-title">
+    <div class="modal__header">
+      <h2 class="modal__title" id="legal-modal-title">Información legal</h2>
+      <button type="button" class="modal__close" data-close-legal aria-label="Cerrar documento">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal__body" id="legal-modal-body"></div>
+    <div class="modal__footer">
+      <button type="button" class="btn btn--surface btn--sm" data-close-legal>Entendido</button>
+    </div>
+  </dialog>
+
+  <!-- Discreet Cookie Notice -->
+  <aside class="cookie-notice" id="cookie-notice" aria-label="Aviso de cookies" hidden>
+    <p>Solo usamos almacenamiento local esencial para guardar tus pruebas. Sin rastreadores.</p>
+    <div class="cookie-notice__actions">
+      <button type="button" class="legal-btn" data-legal="cookies">Política de Cookies</button>
+      <button type="button" class="btn btn--gold btn--sm" id="cookie-accept-btn">Aceptar</button>
+    </div>
+  </aside>
 
   <script src="./assets/js/hub.js" defer></script>
 </body>

@@ -1,7 +1,7 @@
 (() => {
   const STORAGE_PRODUCTS_KEY = 'norte_urbano_products_v1';
   const STORAGE_CART_KEY = 'norte_urbano_cart_v1';
-  const WHATSAPP_NUMBER = '59175233556';
+  const WHATSAPP_NUMBER = '59177398405';
 
   const DEFAULT_PRODUCTS = [
     {

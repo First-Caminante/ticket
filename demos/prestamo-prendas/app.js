@@ -1,7 +1,7 @@
 (() => {
   const STORAGE_BOLETAS = 'prendario_andino_boletas_v1';
   const STORAGE_LEDGER = 'prendario_andino_ledger_v1';
-  const WA_DEFAULT = '59175233556';
+  const WA_DEFAULT = '59177398405';
 
   const TODAY = new Date('2026-11-20T12:00:00');
 
@@ -108,7 +108,7 @@
       code: 'BOL-2026-0141',
       clientName: 'Roxana Quispe',
       ci: '4821903 LP',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Oro/Joyas',
       item: 'Joya de oro 18k (14g, cadena y dije)',
       appraisal: 3800,
@@ -124,7 +124,7 @@
       code: 'BOL-2026-0142',
       clientName: 'Alejandro Torrez',
       ci: '6712345 LP',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Celulares',
       item: 'iPhone 14 Pro 256GB (Negro, sin caja)',
       appraisal: 4500,
@@ -140,7 +140,7 @@
       code: 'BOL-2026-0143',
       clientName: 'Fernando Chávez',
       ci: '8345120 EL ALTO',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Laptops/Consolas',
       item: 'Laptop HP Core i7 16GB RAM + cargador',
       appraisal: 3200,
@@ -156,7 +156,7 @@
       code: 'BOL-2026-0144',
       clientName: 'Héctor Mamani',
       ci: '5920184 LP',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Herramientas/Otros',
       item: 'Taladro percutor Bosch GSB 16 en maletín',
       appraisal: 1150,
@@ -172,7 +172,7 @@
       code: 'BOL-2026-0145',
       clientName: 'Mónica Salazar',
       ci: '7045812 LP',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Herramientas/Otros',
       item: 'TV Smart Samsung 50" 4K + control remoto',
       appraisal: 2100,
@@ -188,7 +188,7 @@
       code: 'BOL-2026-0146',
       clientName: 'Patricia Conde',
       ci: '4910221 CB',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Oro/Joyas',
       item: 'Cadena de oro + anillo 18k (9.5g)',
       appraisal: 2600,
@@ -204,7 +204,7 @@
       code: 'BOL-2026-0147',
       clientName: 'Rodrigo Villarroel',
       ci: '6129384 LP',
-      phone: '75233556',
+      phone: '77398405',
       category: 'Laptops/Consolas',
       item: 'Consola PlayStation 5 + 2 mandos DualSense',
       appraisal: 3700,
