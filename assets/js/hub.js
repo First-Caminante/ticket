@@ -162,4 +162,32 @@
       cookieNotice.hidden = true;
     });
   }
+
+  // --- 4. Zen Enso Scroll Fallback (for browsers without CSS scroll()) ---
+  const ensoMark = document.getElementById('enso-scroll-mark');
+  const navEnso = document.querySelector('.brand-lockup__enso');
+  const supportsScrollTimeline = typeof CSS !== 'undefined' && CSS.supports && CSS.supports('animation-timeline', 'scroll()');
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (ensoMark && !supportsScrollTimeline && !reduceMotion) {
+    let ticking = false;
+    const updateEnso = () => {
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const p = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+      const x = Math.cos(p * Math.PI * 2) * 22;
+      const y = -8 + Math.sin(p * Math.PI * 1.5) * 10;
+      const rot = p * 320;
+      const scale = 1.02 + Math.sin(p * Math.PI) * 0.16;
+      ensoMark.style.transform = `translate3d(${x.toFixed(2)}vw, ${y.toFixed(2)}vh, 0) rotate(${rot.toFixed(1)}deg) scale(${scale.toFixed(3)})`;
+      if (navEnso) navEnso.style.transform = `rotate(${(p * 360).toFixed(1)}deg)`;
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateEnso);
+      }
+    }, { passive: true });
+    updateEnso();
+  }
 })();
